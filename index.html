@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="портфолио Алексея Круглыхина на Яндекс.Практикуме">
+  <meta name="keywords" content="Галерея, фотографии, редактор профиля">
+  <meta name="author" content="Алексей Круглыхин">
+  <link rel="stylesheet" href="./pages/index.css">
+  <title>Место</title>
+</head>
+
+<body class="root">
+  <!--section header-->
+  <header class="header">
+    <img class="header__logo" src="./images/Logo.svg" alt="Лого">
+  </header>
+  <main class="content">
+    <!--section profile-->
+    <section class="profile">
+      <div class="profile__wrap">
+        <div class="profile__image"></div>
+        <div class="profile__info">
+          <h1 class="profile__title">Жак-Ив Кусто</h1>
+          <button class="profile__edit-button" type="button"></button>
+          <p class="profile__subtitle">Исследователь океана</p>
+        </div>
+      </div>
+      <button class="profile__add-button" type="button"></button>
+    </section>
+    <!--section gallery-->
+    <section class="gallery">
+      <div class="gallery__card">
+        <img class="gallery__image" src="./images/Karachaevsk.jpg" alt="Карачаевск">
+        <div class="gallery__info">
+          <h2 class="gallery__title">Карачаевск</h2>
+          <button class="gallery__like gallery__like_active" type="button"></button>
+        </div>
+      </div>
+      <div class="gallery__card">
+        <img class="gallery__image" src="./images/Elbrus.jpg" alt="Гора Эльбрус">
+        <div class="gallery__info">
+          <h2 class="gallery__title">Эльбрус</h2>
+          <button class="gallery__like gallery__like_active" type="button"></button>
+        </div>
+      </div>
+      <div class="gallery__card">
+        <img class="gallery__image" src="./images/Dombai.jpg" alt="Домбай">
+        <div class="gallery__info">
+          <h2 class="gallery__title">Домбай</h2>
+          <button class="gallery__like gallery__like_active" type="button"></button>
+        </div>
+      </div>
+      <div class="gallery__card">
+        <img class="gallery__image" src="./images/Elbrus.jpg" alt="Гора Эльбрус">
+        <div class="gallery__info">
+          <h2 class="gallery__title">Эльбрус</h2>
+          <button class="gallery__like gallery__like_active" type="button"></button>
+        </div>
+      </div>
+      <div class="gallery__card">
+        <img class="gallery__image" src="./images/Dombai.jpg" alt="Домбай">
+        <div class="gallery__info">
+          <h2 class="gallery__title">Домбай</h2>
+          <button class="gallery__like gallery__like_active" type="button"></button>
+        </div>
+      </div>
+      <div class="gallery__card">
+        <img class="gallery__image" src="./images/Karachaevsk.jpg" alt="Карачаевск">
+        <div class="gallery__info">
+          <h2 class="gallery__title">Карачаево-Черкесия</h2>
+          <button class="gallery__like gallery__like_active" type="button"></button>
+        </div>
+      </div>
+    </section>
+  </main>
+  <!--section footer-->
+  <footer class="footer">
+    <h2 class="footer__title">© 2022 Mesto Russia</h2>
+  </footer>
+  <!--pop-up-->
+  <div class="popup">
+    <div class="popup__container">
+      <button class="popup__close" type="button"></button>
+      <h2 class="popup__title">Редактировать профиль</h2>
+      <form class="form" name="form-input">
+        <input name="name" type="text" placeholder="Имя" class="popup__text popup__text_type_name">
+        <input name="about" type="text" placeholder="О себе" class="popup__text popup__text_type_about">
+        <button class="popup__submit-btn" type="submit">Сохранить</button>
+      </form>
+    </div>
+  </div>
+  <!--JS-->
+  <script src="./scripts/script.js" defer></script>
+</body>
+
+</html>
