@@ -1,13 +1,14 @@
 .popup__submit-btn {
+    border: none;
     font-weight: 400;
     font-size: 18px;
     line-height: 22px;
     color: #FFFFFF;
     background: #000000;
     border-radius: 2px;
-    padding: 14px 129px 18px 130px;
+    padding: 13px 132px 17px 132px;
     opacity: 1;
-    transition: opacity .2s ease ;
+    transition: opacity .2s ease;
     cursor: pointer;
 }
 
@@ -19,6 +20,6 @@
     .popup__submit-btn {
         font-size: 14px;
         line-height: 17px;
-        padding: 14px 80px;
+        padding: 14px 82.5px;
     }
 }

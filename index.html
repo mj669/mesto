@@ -41,7 +41,7 @@
       <div class="gallery__card">
         <img class="gallery__image" src="./images/Elbrus.jpg" alt="Гора Эльбрус">
         <div class="gallery__info">
-          <h2 class="gallery__title">Эльбрус</h2>
+          <h2 class="gallery__title">Гора Эльбрус</h2>
           <button class="gallery__like gallery__like_active" type="button"></button>
         </div>
       </div>
@@ -55,7 +55,7 @@
       <div class="gallery__card">
         <img class="gallery__image" src="./images/Elbrus.jpg" alt="Гора Эльбрус">
         <div class="gallery__info">
-          <h2 class="gallery__title">Эльбрус</h2>
+          <h2 class="gallery__title">Гора Эльбрус</h2>
           <button class="gallery__like gallery__like_active" type="button"></button>
         </div>
       </div>
@@ -77,7 +77,7 @@
   </main>
   <!--section footer-->
   <footer class="footer">
-    <h2 class="footer__title">© 2022 Mesto Russia</h2>
+    <p class="footer__title">© 2022 Mesto Russia</p>
   </footer>
   <!--pop-up-->
   <div class="popup">
@@ -85,14 +85,17 @@
       <button class="popup__close" type="button"></button>
       <h2 class="popup__title">Редактировать профиль</h2>
       <form class="form" name="form-input">
-        <input name="name" type="text" placeholder="Имя" class="popup__text popup__text_type_name">
-        <input name="about" type="text" placeholder="О себе" class="popup__text popup__text_type_about">
+        <!--Добавлена обертка для корректирования отступов. Удаление стилей у модификаторов для реализации js-->
+        <div class="form__input-wrap">
+          <input name="name" type="text" placeholder="Имя" class="popup__text popup__text_type_name">
+          <input name="about" type="text" placeholder="О себе" class="popup__text popup__text_type_about">
+        </div>
         <button class="popup__submit-btn" type="submit">Сохранить</button>
       </form>
     </div>
   </div>
   <!--JS-->
-  <script src="./scripts/script.js" defer></script>
+  <script src="./scripts/index.js" defer></script>
 </body>
 
 </html>
