@@ -17,7 +17,7 @@
     }
 }
 
-@media screen and (max-width:500px) {
+@media screen and (max-width:560px) {
     .profile__subtitle {
         justify-self: center;
         max-width: 282px;

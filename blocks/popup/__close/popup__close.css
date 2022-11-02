@@ -17,7 +17,7 @@
     opacity: .6;
 }
 
-@media screen and (max-width: 500px) {
+@media screen and (max-width: 560px) {
     .popup__close {
         background-image: url(../../../images/Close\ Icon\ s.svg);
         width: 20px;

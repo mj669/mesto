@@ -6,7 +6,7 @@
     color: #FFFFFF;
     background: #000000;
     border-radius: 2px;
-    padding: 13px 132px 17px 132px;
+    padding: 16px 132px 14px 132px;
     opacity: 1;
     transition: opacity .2s ease;
     cursor: pointer;
@@ -16,7 +16,7 @@
     opacity: .8;
 }
 
-@media screen and (max-width: 500px) {
+@media screen and (max-width: 560px) {
     .popup__submit-btn {
         font-size: 14px;
         line-height: 17px;

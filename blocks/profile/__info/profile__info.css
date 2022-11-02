@@ -2,13 +2,20 @@
     display: grid;
     grid-template-columns: auto;
     align-items: end;
-    gap: 16px 18px;
+    gap: 8px 20px;
+    height: 121px;
     max-width: 430px;
 }
 
 @media screen and (max-width:768px) {
   .profile__info {
     max-width: 330px;
+  }
+}
+
+@media screen and (max-width:560px) {
+  .profile__info {
+    height: auto;
   }
 }
 

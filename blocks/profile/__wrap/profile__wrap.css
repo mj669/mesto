@@ -3,7 +3,7 @@
     gap: 30px;
 }
 
-@media screen and (max-width:500px) {
+@media screen and (max-width:560px) {
     .profile__wrap {
         flex-direction: column;
         gap: 26px;
