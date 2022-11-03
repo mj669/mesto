@@ -17,18 +17,12 @@ function closePopup () {
 }
 
 function writingProfileData () {
-    jobeInput;
-    namePopup;
-    jobePopup;
     namePopup.value = nameInput.textContent;
     jobePopup.value = jobeInput.textContent;
 }
 
 function formSubmitHandler (evt) {
     evt.preventDefault();
-    jobeInput;
-    namePopup;
-    jobePopup;
     nameInput.textContent = namePopup.value;
     jobeInput.textContent = jobePopup.value;
     closePopup ();
