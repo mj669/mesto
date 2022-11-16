@@ -68,10 +68,10 @@ const initialCards = [
 ];
 
 const addElem = document.querySelector('.profile__add-button');
-const popupAddElem = document.querySelector('.popup__add-card');
+const popupAddElem = document.querySelector('.popup_type_add-card');
 const popupCloseAddElem = document.querySelector('.popup__close-add');
 const galleryContainer = document.querySelector('.gallery');
-const formAddElement = document.querySelector('.form__add');
+const formAddElement = document.querySelector('.form_type_add');
 const namePlacePopup = document.querySelector('.popup__text_type_title');
 const linkPlacePopup = document.querySelector('.popup__text_type_link');
 const deleteButton = document.querySelector('.gallery__delete');
@@ -142,7 +142,7 @@ addElem.addEventListener('click', openAddPopup);
 // Просмотр изображения
 
 const imgElems = document.querySelectorAll('.gallery__image');
-const popupImgMain = document.querySelector('.popup__view-img');
+const popupImgMain = document.querySelector('.popup_type_view-img');
 const popupImgClose = document.querySelector('.popup__close-view');
 const popupImgElem = popupImgMain.querySelector('.popup__img');
 const popupTitle = popupImgMain.querySelector('.popup__figcaption');
