@@ -1,6 +1,5 @@
-.gallery__like {
-    all: unset;
-    background-image: url(../../../images/Like-black.svg);
+.gallery__like_active {
+    background-image: url(../../../../images/Like-white.svg);
     background-repeat: no-repeat;
     background-size: contain;
     background-position: center;

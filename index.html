@@ -31,61 +31,19 @@
     </section>
     <!--section gallery-->
     <section class="gallery">
-      <div class="gallery__card">
-        <img class="gallery__image" src="./images/Karachaevsk.jpg" alt="Карачаевск">
-        <div class="gallery__info">
-          <h2 class="gallery__title">Карачаевск</h2>
-          <button class="gallery__like gallery__like_active" type="button"></button>
-        </div>
-      </div>
-      <div class="gallery__card">
-        <img class="gallery__image" src="./images/Elbrus.jpg" alt="Гора Эльбрус">
-        <div class="gallery__info">
-          <h2 class="gallery__title">Гора Эльбрус</h2>
-          <button class="gallery__like gallery__like_active" type="button"></button>
-        </div>
-      </div>
-      <div class="gallery__card">
-        <img class="gallery__image" src="./images/Dombai.jpg" alt="Домбай">
-        <div class="gallery__info">
-          <h2 class="gallery__title">Домбай</h2>
-          <button class="gallery__like gallery__like_active" type="button"></button>
-        </div>
-      </div>
-      <div class="gallery__card">
-        <img class="gallery__image" src="./images/Elbrus.jpg" alt="Гора Эльбрус">
-        <div class="gallery__info">
-          <h2 class="gallery__title">Гора Эльбрус</h2>
-          <button class="gallery__like gallery__like_active" type="button"></button>
-        </div>
-      </div>
-      <div class="gallery__card">
-        <img class="gallery__image" src="./images/Dombai.jpg" alt="Домбай">
-        <div class="gallery__info">
-          <h2 class="gallery__title">Домбай</h2>
-          <button class="gallery__like gallery__like_active" type="button"></button>
-        </div>
-      </div>
-      <div class="gallery__card">
-        <img class="gallery__image" src="./images/Karachaevsk.jpg" alt="Карачаевск">
-        <div class="gallery__info">
-          <h2 class="gallery__title">Карачаево-Черкесия</h2>
-          <button class="gallery__like gallery__like_active" type="button"></button>
-        </div>
-      </div>
+
     </section>
   </main>
   <!--section footer-->
   <footer class="footer">
     <p class="footer__title">© 2022 Mesto Russia</p>
   </footer>
-  <!--pop-up-->
-  <div class="popup">
+  <!--popup edit-profile-->
+  <div class="popup popup__edit-profile">
     <div class="popup__container">
       <button class="popup__close" type="button"></button>
       <h2 class="popup__title">Редактировать профиль</h2>
       <form class="form" name="form-input">
-        <!--Добавлена обертка для корректирования отступов.-->
         <div class="form__input-wrap">
           <input name="name" type="text" placeholder="Имя" class="popup__text popup__text_type_name">
           <input name="about" type="text" placeholder="О себе" class="popup__text popup__text_type_about">
@@ -94,6 +52,41 @@
       </form>
     </div>
   </div>
+  <!--popup add-card-->
+  <div class="popup popup__add-card">
+    <div class="popup__container">
+      <button class="popup__close popup__close-add" type="button"></button>
+      <h2 class="popup__title">Новое место</h2>
+      <form class="form form__add" name="form-input">
+        <div class="form__input-wrap">
+          <input name="title" type="text" placeholder="Название" class="popup__text popup__text_type_title">
+          <input name="link" type="text" placeholder="Ссылка на картинку" class="popup__text popup__text_type_link">
+        </div>
+        <button class="popup__submit-btn" type="submit">Создать</button>
+      </form>
+    </div>
+  </div>
+  <!--popup view-img-->
+  <div class="popup popup__view-img">
+    <div class="popup__container-view-img">
+      <button class="popup__close popup__close-view" type="button"></button>
+      <figure class="popup__figure">
+        <img class="popup__img" src="#" alt="Описание">
+        <figcaption class="popup__figcaption"></figcaption>
+      </figure>
+    </div>
+  </div>
+  <!--template-->
+  <template id="card-template">
+    <div class="gallery__card">
+      <button class="gallery__delete gallery__delete_active" type="button"></button>
+      <img class="gallery__image" src="" alt="Описание">
+      <div class="gallery__info">
+        <h2 class="gallery__title"></h2>
+        <button class="gallery__like gallery__like_active" type="button"></button>
+      </div>
+    </div>
+  </template>
   <!--JS-->
   <script src="./scripts/index.js" defer></script>
 </body>
