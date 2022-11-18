@@ -39,39 +39,39 @@
     <p class="footer__title">© 2022 Mesto Russia</p>
   </footer>
   <!--popup edit-profile-->
-  <div class="popup popup__edit-profile">
+  <div class="popup popup_type_edit-profile">
     <div class="popup__container">
-      <button class="popup__close" type="button"></button>
+      <button class="popup__close popup__close-edit" type="button"></button>
       <h2 class="popup__title">Редактировать профиль</h2>
-      <form class="form" name="form-input">
+      <form class="form form_type_edit" name="form-input">
         <div class="form__input-wrap">
-          <input name="name" type="text" placeholder="Имя" class="popup__text popup__text_type_name">
-          <input name="about" type="text" placeholder="О себе" class="popup__text popup__text_type_about">
+          <input name="name" required type="text" placeholder="Имя" class="popup__text popup__text_type_name">
+          <input name="about" required type="text" placeholder="О себе" class="popup__text popup__text_type_about">
         </div>
         <button class="popup__submit-btn" type="submit">Сохранить</button>
       </form>
     </div>
   </div>
   <!--popup add-card-->
-  <div class="popup popup__add-card">
+  <div class="popup popup_type_add-card">
     <div class="popup__container">
       <button class="popup__close popup__close-add" type="button"></button>
       <h2 class="popup__title">Новое место</h2>
-      <form class="form form__add" name="form-input">
+      <form class="form form_type_add" name="form-input">
         <div class="form__input-wrap">
-          <input name="title" type="text" placeholder="Название" class="popup__text popup__text_type_title">
-          <input name="link" type="text" placeholder="Ссылка на картинку" class="popup__text popup__text_type_link">
+          <input name="title" required type="text" placeholder="Название" class="popup__text popup__text_type_title">
+          <input name="link" required type="url" placeholder="Ссылка на картинку" class="popup__text popup__text_type_link">
         </div>
         <button class="popup__submit-btn" type="submit">Создать</button>
       </form>
     </div>
   </div>
   <!--popup view-img-->
-  <div class="popup popup__view-img">
+  <div class="popup popup_type_view-img">
     <div class="popup__container-view-img">
       <button class="popup__close popup__close-view" type="button"></button>
       <figure class="popup__figure">
-        <img class="popup__img" src="#" alt="Описание">
+        <img class="popup__img" src="#" alt="">
         <figcaption class="popup__figcaption"></figcaption>
       </figure>
     </div>
@@ -80,14 +80,16 @@
   <template id="card-template">
     <div class="gallery__card">
       <button class="gallery__delete gallery__delete_active" type="button"></button>
-      <img class="gallery__image" src="" alt="Описание">
+      <img class="gallery__image" src="#" alt="">
       <div class="gallery__info">
         <h2 class="gallery__title"></h2>
         <button class="gallery__like gallery__like_active" type="button"></button>
       </div>
     </div>
   </template>
-  <!--JS-->
+  <!--cardsJS-->
+  <script src="./scripts/cards.js"></script>
+  <!--indexJS-->
   <script src="./scripts/index.js" defer></script>
 </body>
 
