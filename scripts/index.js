@@ -84,7 +84,6 @@ const generateCard = (dataCard) => {
 function formAddCardSubmitHandler(evt) {
     evt.preventDefault();
     const newCardData = { link: linkPlacePopup.value, name: namePlacePopup.value };
-    initialCards.unshift(newCardData);
     renderCard(newCardData);
     linkPlacePopup.value = '';
     namePlacePopup.value = '';
@@ -117,9 +116,7 @@ const popupTitle = popupImgMain.querySelector('.popup__figcaption');
 
 function setEventOnImg(item) {
     item.addEventListener('click', (evt) => {
-        const imgSrc = evt.target.src;
-        const imgItem = initialCards.find(item => item.link === imgSrc);
-        openImgPopup(imgItem);
+        openImgPopup(evt.target);
     });
 }
 
@@ -127,14 +124,14 @@ function closeImgPopup() {
     popupImgElem.src = '';
     popupImgElem.alt = '';
     popupTitle.textContent = '';
-    popupImgMain.classList.remove('popup_opened');
+    closePopup(popupImgMain);
 }
 
 function openImgPopup(imgItem) {
-    popupImgElem.src = imgItem.link;
-    popupImgElem.alt = imgItem.name;
-    popupTitle.textContent = imgItem.name;
-    popupImgMain.classList.add('popup_opened');
+    popupImgElem.src = imgItem.src;
+    popupImgElem.alt = imgItem.alt;
+    popupTitle.textContent = imgItem.alt;
+    openPopup(popupImgMain);
 }
 
 btnCloseImg.addEventListener('click', closeImgPopup);
