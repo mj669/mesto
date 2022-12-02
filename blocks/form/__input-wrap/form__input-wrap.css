@@ -1,13 +1,4 @@
 .form__input-wrap {
     display: flex;
     flex-direction: column;
-    gap: 24px;
-    margin-bottom: 48px;
-}
-
-@media screen and (max-width: 560px) {
-    .form__input-wrap {
-        margin-bottom: 49px;
-        gap: 30px;
-    }
 }

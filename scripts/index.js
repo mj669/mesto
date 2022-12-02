@@ -135,3 +135,29 @@ function openImgPopup(imgItem) {
 }
 
 btnCloseImg.addEventListener('click', closeImgPopup);
+
+
+
+// Закрытие модального окна Esc
+
+const closePopupEsc = (evt) => {
+    if (evt.key === 'Escape') {
+        closePopup(document.querySelector(".popup_opened"));
+    };
+};
+
+document.addEventListener('keydown', closePopupEsc);
+
+
+
+// Закрытие модального окна Overlay
+
+const popupElem = document.querySelectorAll('.popup');
+
+popupElem.forEach((elem) => {
+    elem.addEventListener("click", (evt) => {
+        if (evt.target === evt.currentTarget) {
+            closePopup(elem);
+        }
+    });
+});

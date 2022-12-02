@@ -43,12 +43,22 @@
     <div class="popup__container">
       <button class="popup__close popup__close-edit" type="button"></button>
       <h2 class="popup__title">Редактировать профиль</h2>
-      <form class="form form_type_edit" name="form-input">
-        <div class="form__input-wrap">
-          <input name="name" required type="text" placeholder="Имя" class="popup__text popup__text_type_name">
-          <input name="about" required type="text" placeholder="О себе" class="popup__text popup__text_type_about">
-        </div>
-        <button class="popup__submit-btn" type="submit">Сохранить</button>
+      <form class="form form_type_edit" name="form-input" novalidate>
+        <fieldset class="form__set">
+          <div class="form__input-wrap">
+            <div>
+              <input name="name" type="text" placeholder="Имя" class="popup__text popup__text_type_name" id="name-input"
+                required minlength="2" maxlength="40">
+              <span class="popup__text-error name-input-error"></span>
+            </div>
+            <div>
+              <input name="about" type="text" placeholder="О себе" class="popup__text popup__text_type_about"
+                id="about-input" required minlength="2" maxlength="200">
+              <span class="popup__text-error about-input-error"></span>
+            </div>
+          </div>
+          <button class="popup__submit-btn" type="submit">Сохранить</button>
+        </fieldset>
       </form>
     </div>
   </div>
@@ -57,12 +67,22 @@
     <div class="popup__container">
       <button class="popup__close popup__close-add" type="button"></button>
       <h2 class="popup__title">Новое место</h2>
-      <form class="form form_type_add" name="form-input">
-        <div class="form__input-wrap">
-          <input name="title" required type="text" placeholder="Название" class="popup__text popup__text_type_title">
-          <input name="link" required type="url" placeholder="Ссылка на картинку" class="popup__text popup__text_type_link">
-        </div>
-        <button class="popup__submit-btn" type="submit">Создать</button>
+      <form class="form form_type_add" name="form-input" novalidate>
+        <fieldset class="form__set">
+          <div class="form__input-wrap">
+            <div>
+              <input name="title" type="text" placeholder="Название" class="popup__text popup__text_type_title"
+                id="title-input" required minlength="2" maxlength="30">
+              <span class="popup__text-error title-input-error"></span>
+            </div>
+            <div>
+              <input name="link" type="url" placeholder="Ссылка на картинку" class="popup__text popup__text_type_link"
+                id="link-input" required>
+              <span class="popup__text-error link-input-error"></span>
+            </div>
+          </div>
+          <button class="popup__submit-btn" type="submit">Создать</button>
+        </fieldset>
       </form>
     </div>
   </div>
@@ -87,6 +107,10 @@
       </div>
     </div>
   </template>
+  <!--dataJS-->
+  <script src="./scripts/data.js"></script>
+  <!--validateJS-->
+  <script src="./scripts/validate.js"></script>
   <!--cardsJS-->
   <script src="./scripts/cards.js"></script>
   <!--indexJS-->
