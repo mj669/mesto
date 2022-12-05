@@ -2,7 +2,6 @@
 
 const btnOpenEditProfile = document.querySelector('.profile__edit-button');
 const popupEditProfile = document.querySelector('.popup_type_edit-profile');
-const bntCloseEditProfile = document.querySelector('.popup__close-edit');
 const profileForm = document.forms['profile-form'];
 const nameProfile = document.querySelector('.profile__title');
 const jobeProfile = document.querySelector('.profile__subtitle');
@@ -38,15 +37,12 @@ btnOpenEditProfile.addEventListener('click', () => {
     fillProfileInputs();
 });
 
-bntCloseEditProfile.addEventListener('click', () => closePopup(popupEditProfile));
-
 
 
 // Работа с Card
 
 const btnAddCard = document.querySelector('.profile__add-button');
 const popupAddCard = document.querySelector('.popup_type_add-card');
-const btnCloseCard = document.querySelector('.popup__close-add');
 const galleryContainer = document.querySelector('.gallery');
 const cardForm = document.forms['card-form'];
 const namePlacePopup = document.querySelector('.popup__text_type_title');
@@ -99,8 +95,6 @@ initialCards.forEach(renderCard);
 
 cardForm.addEventListener('submit', handleSubmitAddForm);
 
-btnCloseCard.addEventListener('click', () => closePopup(popupAddCard));
-
 btnAddCard.addEventListener('click', () => openPopup(popupAddCard));
 
 
@@ -108,7 +102,7 @@ btnAddCard.addEventListener('click', () => openPopup(popupAddCard));
 // Просмотр изображения
 
 const popupImgMain = document.querySelector('.popup_type_view-img');
-const btnCloseImg = document.querySelector('.popup__close-view');
+//const btnCloseImg = document.querySelector('.popup__close-view');
 const popupImgElem = popupImgMain.querySelector('.popup__img');
 const popupTitle = popupImgMain.querySelector('.popup__figcaption');
 
@@ -132,7 +126,16 @@ function openImgPopup(imgItem) {
     openPopup(popupImgMain);
 }
 
-btnCloseImg.addEventListener('click', closeImgPopup);
+
+
+// Закрытие модального окна X
+
+const closeButtons = document.querySelectorAll('.popup__close');
+
+closeButtons.forEach((button) => {
+    const popup = button.closest('.popup');
+    button.addEventListener('click', () => closePopup(popup));
+});
 
 
 
