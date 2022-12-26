@@ -1,4 +1,4 @@
-const selectorList = {
+export const selectorList = {
     formSelector: '.form',
     inputSelector: '.popup__text',
     submitButtonSelector: '.popup__submit-btn',
