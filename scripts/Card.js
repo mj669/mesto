@@ -1,13 +1,16 @@
-import {openPopup} from './utils.js';
-
 class Card {
-    constructor({name, link}) {
+    constructor({name, link}, templateSelector, handleOpenPopup) {
         this._name = name;
         this._link = link;
+        this._templateSelector = templateSelector;
+        this._newCard = this._getTemplate();
+        this._imageElement = this._newCard.querySelector('.gallery__image');
+        this._likeButton = this._newCard.querySelector('.gallery__like');
+        this._handleOpenPopup = handleOpenPopup;
     }
 
     _getTemplate() {
-        const card = document.querySelector('#card-template').content.querySelector('.gallery__card').cloneNode(true);
+        const card = document.querySelector(this._templateSelector).content.querySelector('.gallery__card').cloneNode(true);
 
         return card;
     }
@@ -15,6 +18,9 @@ class Card {
     _setData() {
         const titleElement = this._newCard.querySelector('.gallery__title');
         titleElement.textContent = this._name;
+
+        this._imageElement.src = this._link;
+        this._imageElement.alt = this._name;
     }
 
     _deleteCard() {
@@ -23,36 +29,19 @@ class Card {
     }
 
     _likeCard() {
-        const likeButton = this._newCard.querySelector('.gallery__like');
-        likeButton.classList.toggle('gallery__like_active');
-    }
-
-    _openImgPopup() {
-        const popupImgMain = document.querySelector('.popup_type_view-img');
-        const popupImgElem = popupImgMain.querySelector('.popup__img');
-        const popupTitle = popupImgMain.querySelector('.popup__figcaption');
-        popupImgElem.src = this._link;
-        popupImgElem.alt = this._name;
-        popupTitle.textContent = this._name;
-        openPopup(popupImgMain);
+        this._likeButton.classList.toggle('gallery__like_active');
     }
 
     _setEventListeners() {
         const deleteButtonActive = this._newCard.querySelector('.gallery__delete_active');
         deleteButtonActive.addEventListener('click', () => {this._deleteCard()});
 
-        const likeButtonActive = this._newCard.querySelector('.gallery__like_active');
-        likeButtonActive.addEventListener('click', () => {this._likeCard()});
+        this._likeButton.addEventListener('click', () => {this._likeCard()});
 
-        const imageElement = this._newCard.querySelector('.gallery__image');
-        imageElement.src = this._link;
-        imageElement.alt = this._name;
-
-        imageElement.addEventListener('click', () => {this._openImgPopup()});
+        this._imageElement.addEventListener('click', () => {this._handleOpenPopup(this._name, this._link)});
     }
 
     getView() {
-        this._newCard = this._getTemplate();
         this._setData();
         this._setEventListeners();
 

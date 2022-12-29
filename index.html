@@ -44,21 +44,19 @@
       <button class="popup__close popup__close-edit" type="button"></button>
       <h2 class="popup__title">Редактировать профиль</h2>
       <form class="form form_type_edit" name="profile-form" novalidate>
-        <fieldset class="form__set">
-          <div class="form__input-wrap">
-            <div>
-              <input name="name" type="text" placeholder="Имя" class="popup__text popup__text_type_name" id="name-input"
-                required minlength="2" maxlength="40">
-              <span class="popup__text-error name-input-error"></span>
-            </div>
-            <div>
-              <input name="about" type="text" placeholder="О себе" class="popup__text popup__text_type_about"
-                id="about-input" required minlength="2" maxlength="200">
-              <span class="popup__text-error about-input-error"></span>
-            </div>
+        <div class="form__input-wrap">
+          <div>
+            <input name="name" type="text" placeholder="Имя" class="popup__text popup__text_type_name" id="name-input"
+              required minlength="2" maxlength="40">
+            <span class="popup__text-error name-input-error"></span>
           </div>
-          <button class="popup__submit-btn" type="submit">Сохранить</button>
-        </fieldset>
+          <div>
+            <input name="about" type="text" placeholder="О себе" class="popup__text popup__text_type_about"
+              id="about-input" required minlength="2" maxlength="200">
+            <span class="popup__text-error about-input-error"></span>
+          </div>
+        </div>
+        <button class="popup__submit-btn" type="submit">Сохранить</button>
       </form>
     </div>
   </div>
@@ -68,21 +66,19 @@
       <button class="popup__close popup__close-add" type="button"></button>
       <h2 class="popup__title">Новое место</h2>
       <form class="form form_type_add" name="card-form" novalidate>
-        <fieldset class="form__set">
-          <div class="form__input-wrap">
-            <div>
-              <input name="title" type="text" placeholder="Название" class="popup__text popup__text_type_title"
-                id="title-input" required minlength="2" maxlength="30">
-              <span class="popup__text-error title-input-error"></span>
-            </div>
-            <div>
-              <input name="link" type="url" placeholder="Ссылка на картинку" class="popup__text popup__text_type_link"
-                id="link-input" required>
-              <span class="popup__text-error link-input-error"></span>
-            </div>
+        <div class="form__input-wrap">
+          <div>
+            <input name="title" type="text" placeholder="Название" class="popup__text popup__text_type_title"
+              id="title-input" required minlength="2" maxlength="30">
+            <span class="popup__text-error title-input-error"></span>
           </div>
-          <button class="popup__submit-btn" type="submit">Создать</button>
-        </fieldset>
+          <div>
+            <input name="link" type="url" placeholder="Ссылка на картинку" class="popup__text popup__text_type_link"
+              id="link-input" required>
+            <span class="popup__text-error link-input-error"></span>
+          </div>
+        </div>
+        <button class="popup__submit-btn" type="submit">Создать</button>
       </form>
     </div>
   </div>
@@ -97,7 +93,7 @@
     </div>
   </div>
   <!--template-->
-  <template id="card-template">
+  <template id="card-template" class="card-template_type_default">
     <div class="gallery__card">
       <button class="gallery__delete gallery__delete_active" type="button"></button>
       <img class="gallery__image" src="#" alt="">
@@ -107,10 +103,6 @@
       </div>
     </div>
   </template>
-  <!--FormValidatorJS-->
-  <script type="module" src="./scripts/FormValidator.js"></script>
-  <!--CardJS-->
-  <script type="module" src="./scripts/Card.js"></script>
   <!--indexJS-->
   <script type="module" src="./scripts/index.js" defer></script>
 </body>

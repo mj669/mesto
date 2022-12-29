@@ -4,7 +4,20 @@ import {initialCards} from './cards.js';
 import Card from './Card.js';
 import {selectorList} from './data.js';
 import FormValidator from './FormValidator.js';
-import {openPopup, closePopup} from './utils.js';
+
+
+
+// Открыть/закрыть модальное окно
+
+function openPopup(popup) {
+    popup.classList.add('popup_opened');
+    document.addEventListener('keydown', closePopupEsc);
+}
+
+function closePopup(popup) {
+    popup.classList.remove('popup_opened');
+    document.removeEventListener('keydown', closePopupEsc);
+}
 
 
 
@@ -50,22 +63,44 @@ const linkPlacePopup = document.querySelector('.popup__text_type_link');
 
 function handleSubmitAddForm(evt) {
     evt.preventDefault();
-    const newCardData = { link: linkPlacePopup.value, name: namePlacePopup.value };
+    const newCardData = createCard({ link: linkPlacePopup.value, name: namePlacePopup.value });
     renderCard(newCardData);
     evt.target.reset();
     closePopup(popupAddCard);
 }
 
-const renderCard = (dataCard) => {
-    const card = new Card(dataCard);
-    galleryContainer.prepend(card.getView());
+const createCard = (dataCard) => {
+    const card = new Card(dataCard, '.card-template_type_default', handleOpenPopup);
+    return card.getView();
 };
 
-initialCards.forEach(renderCard);
+const renderCard = (card) => {
+    galleryContainer.prepend(card);
+};
+
+initialCards.forEach((item) => {
+    const card = createCard(item);
+    renderCard(card);
+});
 
 cardForm.addEventListener('submit', handleSubmitAddForm);
 
 btnAddCard.addEventListener('click', () => openPopup(popupAddCard));
+
+
+
+// Просмотр изображения
+
+const popupImgMain = document.querySelector('.popup_type_view-img');
+const popupImgElem = popupImgMain.querySelector('.popup__img');
+const popupTitle = popupImgMain.querySelector('.popup__figcaption');
+
+function handleOpenPopup(name, link) {
+    popupImgElem.src = link;
+    popupImgElem.alt = name;
+    popupTitle.textContent = name;
+    openPopup(popupImgMain);
+}
 
 
 
@@ -94,10 +129,22 @@ popupElems.forEach((elem) => {
 
 
 
+// Закрытие модального окна Esc
+
+const closePopupEsc = (evt) => {
+    if (evt.key === 'Escape') {
+        closePopup(document.querySelector(".popup_opened"));
+    };
+};
+
+
+
 // Валидация форм
 
 const validationFormEditProfile = new FormValidator(selectorList, profileForm);
 validationFormEditProfile.enableValidation();
+validationFormEditProfile.resetValidation();
 
 const validationFormAddCard = new FormValidator(selectorList, cardForm);
 validationFormAddCard.enableValidation();
+validationFormAddCard.resetValidation();
