@@ -1,28 +1,27 @@
 import Popup from './Popup.js';
 
 class PopupWithForm extends Popup {
-    constructor({popupSelector, handleSubmitForm}) {
-        super(popupSelector);
-        this._form = this._popupSelector.querySelector('.form');
+    constructor({popup, handleSubmitForm}) {
+        super(popup);
+        this._form = this._popup.querySelector('.form');
         this._inputList = this._form.querySelectorAll('.popup__text');
         this._handleSubmitForm = handleSubmitForm;
     }
 
     _getInputValues() {
-        const inputValues = {};
+        this._formValues = {};
         this._inputList.forEach((input) => {
-            inputValues[input.name] = input.value;
+            this._formValues[input.name] = input.value;
         });
-        
-        return inputValues;
+
+        return this._formValues;
     }
 
     setEventListeners() {
         super.setEventListeners();
         this._form.addEventListener('submit', (evt) => {
             evt.preventDefault();
-            localStorage.setItem('img', 123);
-            this._handleSubmitForm(evt, this._getInputValues());
+            this._handleSubmitForm(this._getInputValues());
         })
     }
 

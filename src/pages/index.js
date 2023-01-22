@@ -1,7 +1,5 @@
 //Import
 
-import '../pages/index.css';
-
 import {
     initialCards,
     selectorList,
@@ -14,7 +12,6 @@ import {
     jobeInput,
     btnAddCard,
     popupAddCard,
-    galleryContainer,
     cardForm,
     popupImgMain,
 } from '../utils/constants.js';
@@ -25,11 +22,16 @@ import PopupWithImage from '../components/PopupWithImage.js';
 import PopupWithForm from '../components/PopupWithForm.js';
 import UserInfo from '../components/UserInfo.js';
 
+import '../pages/index.css';
+
 
 
 // Профиль
 
-const userInfo = new UserInfo(nameProfile, jobeProfile);
+const userInfo = new UserInfo({
+    name: nameProfile,
+    job: jobeProfile
+});
 
 // Карточка
 
@@ -39,9 +41,8 @@ popopImageData.setEventListeners();
 // Модальное окно редактирования профиля
 
 const popupEditForm = new PopupWithForm({
-    popupSelector: popupEditProfile,
-    handleSubmitForm: (evt, values) => {
-        evt.preventDefault();
+    popup: popupEditProfile,
+    handleSubmitForm: (values) => {
         userInfo.setUserInfo({
             name: values['name'],
             job: values['about'],
@@ -54,41 +55,39 @@ popupEditForm.setEventListeners();
 // Модальное окно добавления карточки
 
 const popupAddForm = new PopupWithForm({
-    popupSelector: popupAddCard,
-    handleSubmitForm: (evt, values) => {
-        evt.preventDefault();
+    popup: popupAddCard,
+    handleSubmitForm: (values) => {
         const obj = {
             name: values['title'],
             link: values['link'],
         };
-        const newCard = new Card({
-            name: values['title'],
-            link: values['link'],
-        }, '.card-template_type_default',
-        () => {
-            popopImageData.open(obj)
-        });
-        galleryContainer.prepend(newCard.getView());
+        renderCard.addItem(createCard(obj));
         popupAddForm.close();
     }
 });
 popupAddForm.setEventListeners();
 
+// Создание карточки
+
+function createCard(item) {
+    const card = new Card({
+        data: item,
+        templateSelector: '.card-template_type_default',
+        handleCardClick: () => {
+            popopImageData.open(item)
+        }
+    });
+    return card.getView();
+}
+
 // Отрисовка начального массива карточек
 
 const renderCard = new Section({
     items: initialCards,
-    renderer: (data) => {
-        const card = new Card({
-            name: data.name,
-            link: data.link,
-        }, '.card-template_type_default', 
-        () => {
-            popopImageData.open(data);
-        });
-        renderCard.addItem(card.getView());
+    renderer: (item) => {
+        renderCard.addItem(createCard(item));
     }
-}, galleryContainer);
+}, '.gallery');
 renderCard.renderItems();
 
 // Открытие модального окна редактирования профиля

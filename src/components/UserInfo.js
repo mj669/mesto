@@ -1,19 +1,19 @@
 class UserInfo {
-    constructor(nameProfile, jobeProfile) {
-        this._nameProfile = nameProfile;
-        this._jobeProfile = jobeProfile;
+    constructor({name, job}) {
+        this._name = name;
+        this._job = job;
     }
 
     getUserInfo() {
         return {
-            name: this._nameProfile.textContent,
-            job: this._jobeProfile.textContent,
+            name: this._name.textContent,
+            job: this._job.textContent,
         }
     }
 
     setUserInfo({name, job}) {
-        this._nameProfile.textContent = name;
-        this._jobeProfile.textContent = job;
+        this._name.textContent = name;
+        this._job.textContent = job;
     }
 }
 export default UserInfo;

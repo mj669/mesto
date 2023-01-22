@@ -1,7 +1,7 @@
 class Card {
-    constructor({name, link}, templateSelector, handleCardClick) {
-        this._name = name;
-        this._link = link;
+    constructor({data, templateSelector, handleCardClick}) {
+        this._name = data.name;
+        this._link = data.link;
         this._templateSelector = templateSelector;
         this._newCard = this._getTemplate();
         this._imageElement = this._newCard.querySelector('.gallery__image');

@@ -51,22 +51,8 @@ export const jobeInput = document.querySelector('.popup__text_type_about');
 
 export const btnAddCard = document.querySelector('.profile__add-button');
 export const popupAddCard = document.querySelector('.popup_type_add-card');
-export const galleryContainer = document.querySelector('.gallery');
 export const cardForm = document.forms['card-form'];
-export const namePlacePopup = document.querySelector('.popup__text_type_title');
-export const linkPlacePopup = document.querySelector('.popup__text_type_link');
-
 
 // Просмотр изображения
 
 export const popupImgMain = document.querySelector('.popup_type_view-img');
-export const popupImgElem = popupImgMain.querySelector('.popup__img');
-export const popupTitle = popupImgMain.querySelector('.popup__figcaption');
-
-// Закрытие модального окна X
-
-export const closeButtons = document.querySelectorAll('.popup__close');
-
-// Закрытие модального окна Overlay
-
-export const popupElems = document.querySelectorAll('.popup');
