@@ -4,16 +4,11 @@ import {
     initialCards,
     selectorList,
     btnOpenEditProfile,
-    popupEditProfile,
     profileForm,
-    nameProfile,
-    jobeProfile,
     nameInput,
     jobeInput,
     btnAddCard,
-    popupAddCard,
     cardForm,
-    popupImgMain,
 } from '../utils/constants.js';
 import Card from '../components/Card.js';
 import FormValidator from '../components/FormValidator.js';
@@ -29,19 +24,19 @@ import '../pages/index.css';
 // Профиль
 
 const userInfo = new UserInfo({
-    name: nameProfile,
-    job: jobeProfile
+    name: '.profile__title',
+    job: '.profile__subtitle'
 });
 
 // Карточка
 
-const popopImageData = new PopupWithImage(popupImgMain);
+const popopImageData = new PopupWithImage('.popup_type_view-img');
 popopImageData.setEventListeners();
 
 // Модальное окно редактирования профиля
 
 const popupEditForm = new PopupWithForm({
-    popup: popupEditProfile,
+    popup: '.popup_type_edit-profile',
     handleSubmitForm: (values) => {
         userInfo.setUserInfo({
             name: values['name'],
@@ -55,7 +50,7 @@ popupEditForm.setEventListeners();
 // Модальное окно добавления карточки
 
 const popupAddForm = new PopupWithForm({
-    popup: popupAddCard,
+    popup: '.popup_type_add-card',
     handleSubmitForm: (values) => {
         const obj = {
             name: values['title'],

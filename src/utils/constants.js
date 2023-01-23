@@ -39,20 +39,11 @@ export const selectorList = {
 // Pop-up Редактирования профиля
 
 export const btnOpenEditProfile = document.querySelector('.profile__edit-button');
-export const popupEditProfile = document.querySelector('.popup_type_edit-profile');
 export const profileForm = document.forms['profile-form'];
-export const nameProfile = document.querySelector('.profile__title');
-export const jobeProfile = document.querySelector('.profile__subtitle');
 export const nameInput = document.querySelector('.popup__text_type_name');
 export const jobeInput = document.querySelector('.popup__text_type_about');
-
 
 // Работа с Card
 
 export const btnAddCard = document.querySelector('.profile__add-button');
-export const popupAddCard = document.querySelector('.popup_type_add-card');
 export const cardForm = document.forms['card-form'];
-
-// Просмотр изображения
-
-export const popupImgMain = document.querySelector('.popup_type_view-img');
