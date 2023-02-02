@@ -1,31 +1,3 @@
-export const initialCards = [
-    {
-        name: 'Архыз',
-        link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/arkhyz.jpg'
-    },
-    {
-        name: 'Челябинская область',
-        link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/chelyabinsk-oblast.jpg'
-    },
-    {
-        name: 'Иваново',
-        link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/ivanovo.jpg'
-    },
-    {
-        name: 'Камчатка',
-        link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kamchatka.jpg'
-    },
-    {
-        name: 'Холмогорский район',
-        link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kholmogorsky-rayon.jpg'
-    },
-    {
-        name: 'Байкал',
-        link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/baikal.jpg'
-    }
-];
-
-
 export const selectorList = {
     formSelector: '.form',
     inputSelector: '.popup__text',
@@ -34,7 +6,6 @@ export const selectorList = {
     inputErrorClass: 'popup__text_type_error',
     errorClass: 'popup__text-error_active',
 };
-
 
 // Pop-up Редактирования профиля
 
@@ -47,3 +18,8 @@ export const jobeInput = document.querySelector('.popup__text_type_about');
 
 export const btnAddCard = document.querySelector('.profile__add-button');
 export const cardForm = document.forms['card-form'];
+
+// Изменение аватара
+
+export const changeAvatarButton = document.querySelector('.profile__image');
+export const changeAvatarForm = document.forms['avatar-form'];
