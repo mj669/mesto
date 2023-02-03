@@ -37,33 +37,28 @@ const userInfo = new UserInfo({
     avatarSelector: '.profile__image'
 });
 
-// Загрузка информации о пользователе с сервера
+// Загрузка информации о пользователе и карточек с сервера
 
-api.getUserData()
-    .then((data) => {
+Promise.all([api.getUserData(), api.getCards()])
+    .then(([userData, cards]) => {
         userInfo.setUserInfo({
-            name: data.name,
-            job: data.about,
-            id: data._id,
+            name: userData.name,
+            job: userData.about,
+            id: userData._id,
         });
         userInfo.setUserAvatar({
-            avatar: data.avatar
+            avatar: userData.avatar
         });
+        renderCard.renderItems(cards);
     })
-    .catch(err => console.log(`Ошибка.....: ${err}`))
+    .catch(err => {
+        console.log(`Ошибка.....: ${err}`)
+    });
 
 // Карточка
 
 const popopImageData = new PopupWithImage('.popup_type_view-img');
 popopImageData.setEventListeners();
-
-// Загрузка карточек с сервера
-
-api.getCards()
-    .then((data) => {
-        renderCard.renderItems(data);
-    })
-    .catch(err => console.log(`Ошибка.....: ${err}`))
 
 // Отрисовка начального массива карточек
 
@@ -79,17 +74,21 @@ const renderCard = new Section(
 const popupEditForm = new PopupWithForm({
     popup: '.popup_type_edit-profile',
     handleSubmitForm: (values) => {
+        popupEditForm.submitButtonText('Сохранение...');
         api.editProfile(values['name'], values['about'])
             .then(() => {
                 userInfo.setUserInfo({
                     name: values['name'],
                     job: values['about'],
                 });
-                popupEditForm.submitButtonText('Сохранение...');
                 popupEditForm.close();
             })
-            .catch(err => console.log(`Ошибка.....: ${err}`))
-            .finally(() => { popupEditForm.submitButtonText('Сохранить') })
+            .catch(err => {
+                console.log(`Ошибка.....: ${err}`)
+            })
+            .finally(() => { 
+                popupEditForm.submitButtonText('Сохранить') 
+            })
     }
 });
 popupEditForm.setEventListeners();
@@ -105,8 +104,12 @@ const popupAddForm = new PopupWithForm({
                 renderCard.addItem(createCard(res));
                 popupAddForm.close();
             })
-            .catch(err => console.log(`Ошибка.....: ${err}`))
-            .finally(() => { popupAddForm.submitButtonText('Создать') })
+            .catch(err => {
+                console.log(`Ошибка.....: ${err}`)
+            })
+            .finally(() => { 
+                popupAddForm.submitButtonText('Создать') 
+            })
     }
 });
 popupAddForm.setEventListeners();
@@ -116,22 +119,26 @@ const popupDeleteConfirm = new PopupWithForm({
 });
 popupDeleteConfirm.setEventListeners();
 
-    // Модальное окно редактирования аватара
+// Модальное окно редактирования аватара
 
-    const popupChangeAvatarForm = new PopupWithForm({
-        popup: '.popup_type_change-avatar',
-        handleSubmitForm: (value) => {
-            popupChangeAvatarForm.submitButtonText('Сохранение...');
-            api.changeAvatar(value['avatar'])
-                .then(() => {
-                    userInfo.setUserAvatar(value['avatar']);
-                    popupChangeAvatarForm.close();
-                })
-                .catch(err => console.log(`Ошибка.....: ${err}`))
-                .finally(() => { popupChangeAvatarForm.submitButtonText('Сохранить') })
-        }
-    })
-    popupChangeAvatarForm.setEventListeners();
+const popupChangeAvatarForm = new PopupWithForm({
+    popup: '.popup_type_change-avatar',
+    handleSubmitForm: (value) => {
+        popupChangeAvatarForm.submitButtonText('Сохранение...');
+        api.changeAvatar(value['avatar'])
+            .then((res) => {
+                userInfo.setUserAvatar(res);
+                popupChangeAvatarForm.close();
+            })
+            .catch(err => {
+                console.log(`Ошибка.....: ${err}`)
+            })
+            .finally(() => { 
+                popupChangeAvatarForm.submitButtonText('Сохранить') 
+            })
+    }
+})
+popupChangeAvatarForm.setEventListeners();
 
 // Создание карточки
 
@@ -151,19 +158,27 @@ function createCard(item) {
                         card.delete();
                         popupDeleteConfirm.close()
                     })
-                    .catch(err => console.log(`Ошибка.....: ${err}`))
-                    .finally(() => { popupDeleteConfirm.submitButtonText('Да') })
+                    .catch(err => {
+                        console.log(`Ошибка.....: ${err}`)
+                    })
+                    .finally(() => { 
+                        popupDeleteConfirm.submitButtonText('Да') 
+                    })
             })
         },
         handleLikeCard: (id) => {
             if (card.isLikeCard()) {
                 api.dislikeCard(id)
                     .then((res) => card.setLikes(res.likes))
-                    .catch(err => console.log(`Ошибка.....: ${err}`))
+                    .catch(err => {
+                        console.log(`Ошибка.....: ${err}`)
+                    })
             } else {
                 api.likeCard(id)
                     .then((res) => card.setLikes(res.likes))
-                    .catch(err => console.log(`Ошибка.....: ${err}`))
+                    .catch(err => {
+                        console.log(`Ошибка.....: ${err}`)
+                    })
             }
         },
         userId: userInfo.getUserInfo().id
@@ -205,4 +220,3 @@ validationFormAddCard.enableValidation();
 
 const validationFormChangeAvatar = new FormValidator(selectorList, changeAvatarForm);
 validationFormChangeAvatar.enableValidation();
-

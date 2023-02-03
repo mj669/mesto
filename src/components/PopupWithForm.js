@@ -5,7 +5,7 @@ class PopupWithForm extends Popup {
         super(popup);
         this._form = this._popup.querySelector('.form');
         this._inputList = this._form.querySelectorAll('.popup__text');
-        this._button = this._form.querySelectorAll('.popup__submit-btn');
+        this._button = this._form.querySelector('.popup__submit-btn');
         this._handleSubmitForm = handleSubmitForm;
     }
 
@@ -24,7 +24,6 @@ class PopupWithForm extends Popup {
 
     submitButtonText(text) {
         this._button.textContent = text
-        console.log(text);
     }
 
     setEventListeners() {
